@@ -105,9 +105,6 @@ img.emoji {
 
 	<div id="header">
      	<div class="container">
-       		<div class="navbar-header">
-         		<button type="button" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="http://www.elliptigo.fr"><img src="/wp-content/themes/elliptigomicrosite/images/logo.png" alt="Elliptigo" class="img-responsive"/></a>
-       		</div>
        		<div id="main-menu" class="">
   				<ul id="menu-main-menu" class=""><li id="menu-item-76" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-76"><a href="http://www.elliptigo.fr/products/" class='menu-image-title-after'><span class="menu-image-title">Produits</span></a>
 <ul class="sub-menu">
