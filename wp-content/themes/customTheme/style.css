@@ -5,13 +5,8 @@ Author : Vincent Van Uytven
 Version : 1.0
 */
 
-<!---->
 @charset "utf-8";
 /* CSS Document */
-
-body {
-  padding-top: 50px;
-}
 
 @import 'flexslider.css';
 /*@import 'menu.css';*/
@@ -26,8 +21,6 @@ body {
 	background-color:#fff; 
 	font-family:"Gotham SSm A", "Gotham SSm B";
 	}
-
-a, a:hover, a:active, a:focus, img { outline:none; color:#84c443;}
 
 /*.container {background-color:#fff;}*/
 .col-md-12 {padding:0px;}
@@ -235,6 +228,10 @@ h1 {
 
 .bikes .btn {border:solid 1px #84c443;}
 .bikes .btn:hover {border-color:#000;}
+
+.red-4 {position: relative; max-width: 100%; margin: 0; z-index:1000}
+.red-4 .home-overlay {max-height: 0; overflow: hidden; -webkit-transition: max-height 0.9s; -moz-transition: max-height 0.9s; transition: max-height 0.9s; position: absolute; bottom: 30px; box-shadow: 1px 1px 6px #afafaf; text-align: left; z-index: 99998; background: #fff; }
+.red-4:hover .home-overlay {display: block; max-height: 260%; }
 
 @media (max-width: 768px) {
 	.red-4 .home-overlay { display: none !important; }
@@ -1301,6 +1298,5 @@ footer .container { background-color:#000; color:#fff;  font-size: 11px !importa
 footer .container a { color:#fff; }
 
 .scrollup {width: 40px; height: 40px; position: fixed; bottom: 30px; right: 30px; display: none; text-indent: -9999px; background: url(../images/arrow-up.png)no-repeat;}
-
 
 
