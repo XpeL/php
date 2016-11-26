@@ -1,4 +1,4 @@
-/* global ajaxurl, attachMediaBoxL10n, _wpMediaGridSettings */
+/* global ajaxurl, attachMediaBoxL10n, _wpMediaGridSettings, showNotice */
 
 var findPosts;
 ( function( $ ){
@@ -51,14 +51,14 @@ var findPosts;
 				},
 				spinner = $( '.find-box-search .spinner' );
 
-			spinner.show();
+			spinner.addClass( 'is-active' );
 
 			$.ajax( ajaxurl, {
 				type: 'POST',
 				data: post,
 				dataType: 'json'
 			}).always( function() {
-				spinner.hide();
+				spinner.removeClass( 'is-active' );
 			}).done( function( x ) {
 				if ( ! x.success ) {
 					$( '#find-posts-response' ).text( attachMediaBoxL10n.error );
@@ -99,9 +99,15 @@ var findPosts;
 		$( '#find-posts-close' ).click( findPosts.close );
 		$( '#doaction, #doaction2' ).click( function( event ) {
 			$( 'select[name^="action"]' ).each( function() {
-				if ( $(this).val() === 'attach' ) {
+				var optionValue = $( this ).val();
+
+				if ( 'attach' === optionValue ) {
 					event.preventDefault();
 					findPosts.open();
+				} else if ( 'delete' === optionValue ) {
+					if ( ! showNotice.warn() ) {
+						event.preventDefault();
+					}
 				}
 			});
 		});

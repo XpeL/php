@@ -1,13 +1,73 @@
-<?php
-if ( have_posts() ) :
-	while ( have_posts() ) : 
-		the_post(); 
-		the_title();
-endwhile;
+<html>
+	<header>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		
-else :
-	echo 'pas de post';
-	
-endif;
-?>
-<h1>hello world</h1>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</header>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="container">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		      	<?php
+					$menu_name = 'custom_menu_slug';
+ 					if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
+					    $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+					 
+					    $menu_items = wp_get_nav_menu_items($menu->term_id);
+					 
+					    $menu_list = '<ul id="menu-' . $menu_name . '">';
+					 
+					    foreach ( (array) $menu_items as $key => $menu_item ) {
+					        $title = $menu_item->title;
+					        $url = $menu_item->url;
+					        $menu_list .= '<li><a href="' . $url . '">' . $title . '</a></li>';
+					    }
+					    $menu_list .= '</ul>';
+					} else {
+					    $menu_list = '<ul><li>Menu "' . $menu_name . '" not defined.</li></ul>';
+					}
+					// $menu_list now ready to output
+				?>
+		      </button>
+		      <a class="navbar-brand" href="#">Brand</a>
+		    </div>
+		  </div>
+		</div>
+		<!- START CTA -->
+		<section class="cta">
+		  <div class="container">
+		    <div class="row">
+				      <div class="col-md-4 col-sm-4">
+				            <div class="thumbnail thumbnail-1 text-center">
+				                <img src="http://fr.elliptigomicro.wpengine.com/wp-content/uploads/sites/8/2016/04/CTA_EllipticalCycling.jpg" alt="" class="img-responsive"/>
+				                <div class="caption">
+				                    Qu’est-ce que le vélo <br/> elliptique ElliptiGO?		                </div>
+				            </div>
+				      </div>
+				      <div class="col-md-4 col-sm-4">
+				            <div class="thumbnail thumbnail-2 text-center">
+										                <img src="http://fr.elliptigomicro.wpengine.com/wp-content/uploads/sites/8/2016/04/CTA_TestRide.jpg" alt="" class="img-responsive"/>
+				                <div class="caption">
+				                    Essayez avant <br/>d’acheter		                </div>
+				            </div>
+				      </div>
+				      <div class="col-md-4 col-sm-4">
+				            <div class="thumbnail thumbnail-3 text-center">
+				                <img src="http://fr.elliptigomicro.wpengine.com/wp-content/uploads/sites/8/2016/04/CTA_Financing.jpg" alt="" class="img-responsive"/>
+				                <div class="caption">
+				                    Trouver <br/>un revendeur		                </div>
+				            </div>
+				      </div>
+		    </div>
+		  </div>
+		</section>
+				<!- END CTA -->
+		<div class="container">
+		</div>
+	</body>
+</html>
